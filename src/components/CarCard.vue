@@ -4,11 +4,14 @@
     <h5>{{ car.make }} | {{ car.model }} | {{ car.year }}</h5>
     <h5>${{ car.price }}</h5>
     <div class="p-2 text-start">{{ car.description }}</div>
-    <button v-if="(car.creatorId == account.id)" @click="removeCar(car.id)"
-      class="btn btn-danger delete-btn rounded-pill"><i class="  px-2 mdi mdi-delete-forever"></i></button>
-    <div v-if="car.creator" class="creator text-end p-1">
-      <img :src="car.creator.picture" alt="">
-      <span>{{ car.creator.name }}</span>
+
+    <div>
+      <div v-if="car.creator" class="creator text-center p-1">
+        <img :src="car.creator.picture" alt="">
+        <span>{{ car.creator.name }}</span>
+      </div>
+      <button v-if="(car.creatorId == account.id)" @click="removeCar(car.id)"
+        class="btn btn-danger delete-btn rounded-pill w-25 m-2"><i class="  mdi mdi-delete-forever"></i></button>
     </div>
   </div>
 </template>
@@ -21,12 +24,15 @@ import Pop from '../utils/Pop.js';
 import { logger } from '../utils/Logger.js';
 import { carsService } from '../services/CarsService.js';
 import { useRouter } from 'vue-router';
+
 export default {
   props: { car: { type: Object, required: true } },
+
   setup(props) {
     const router = useRouter()
     return {
       account: computed(() => AppState.account),
+
       async removeCar() {
         // note with props the id here is unused
         try {
@@ -54,21 +60,20 @@ export default {
   position: relative;
 
   &:hover .delete-btn {
-    display: block;
     opacity: 1;
   }
 
-  .delete-btn {
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    display: none;
-    opacity: 0;
-    transition: all .2s linear .5s;
-  }
+  // .delete-btn {
+  //   position: absolute;
+  //   top: 3px;
+  //   right: 3px;
+  //   display: none;
+  //   opacity: 0;
+  //   transition: all .2s linear .5s;
+  // }
 
   img {
-    height: 15vh;
+    height: 40vh;
     object-fit: cover;
   }
 

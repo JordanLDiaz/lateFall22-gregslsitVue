@@ -36,13 +36,13 @@
       <textarea name="" id="" class="form-control" v-model="editable.description" rows="3"></textarea>
       <small id="helpId" class="form-text text-muted">Help text</small>
     </div>
-    <div class="mb-3 col-4">
-      <button class="btn  w-100 rounded-pill selectable text-danger darken-20" type="button"
-        @click="editable = {}">Cancel</button>
-    </div>
-    <div class="mb-3 col-4">
-      <button v-if="!carData.id" class="btn btn-primary w-100 rounded-pill">Create</button>
+    <div class="col-6">
+      <button v-if="!carData.id" class="btn btn-info w-100 rounded-pill">Create</button>
       <button v-else class="btn btn-success w-100 rounded-pill">Save</button>
+    </div>
+    <div class="col-6">
+      <button class="btn btn-outline w-100 rounded-pill selectable text-danger" type="button"
+        @click="editable = {}">Cancel</button>
     </div>
   </form>
 
@@ -55,8 +55,10 @@ import { computed, reactive, onMounted, ref } from 'vue';
 import Pop from '../utils/Pop.js';
 import { logger } from '../utils/Logger.js';
 import { carsService } from '../services/CarsService.js';
+
 export default {
   props: { carData: { type: Object, default: {} } },
+
   // NOTE emit is black magic and should only be used in very rare cases AKA not friday
   setup(props, { emit }) {
     // let editable = reactive({})
@@ -64,6 +66,7 @@ export default {
       editable.value = props.carData
     })
     const editable = ref({})
+
     async function createCar() {
       try {
         // NOTE if using ref in setup, you must access the value
