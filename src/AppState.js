@@ -12,5 +12,9 @@ export const AppState = reactive({
 
   houses: [],
 
-  activeHouse: null
+  activeHouse: null,
+
+  jobs: [],
+
+  activeJob: null
 })

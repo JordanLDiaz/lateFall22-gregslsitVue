@@ -8,8 +8,8 @@ class HousesService {
     logger.log('[getHouses]', res.data)
     AppState.houses = res.data
   }
-  async getHousesById() {
-    const res = await api.get('api/houses', + id)
+  async getHousesById(id) {
+    const res = await api.get('api/houses/' + id)
     logger.log('[GETTING HOUSE BY ID]', res.data)
     AppState.activeHouse = res.data
   }
@@ -19,9 +19,10 @@ class HousesService {
     // NOTE unshift pushes listing to start of page, push would post to end of page. use preferred!
     AppState.houses.unshift(res.data)
   }
-  // async editHouse() {
-  //   throw new console.error('not ready yet yooo');
-  // }
+  async editHouse(houseData) {
+    logger.log(houseData)
+  }
+
   async removeHouse(id) {
     const res = await api.delete('api/houses' + id)
     logger.log('[REMOVING A HOUSE]', res.data)

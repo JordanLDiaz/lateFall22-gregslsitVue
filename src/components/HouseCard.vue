@@ -5,15 +5,14 @@
     <h5> $ {{ house.price }}</h5>
     <p> {{ house.description }} </p>
     <div>
-      <div v-if="house.creator" class="creator text-center p-1">
+      <!-- <div v-if="house.creator" class="creator text-center p-1">
         <img :src="house.creator.picture" alt="">
         <span> {{ house.creator.name }}</span>
-      </div>
+      </div> -->
       <button v-if="(house.creatorId == account.id)" @click="removeHouse(house.id)"
         class="btn btn-danger delete-btn rounded-pill w-25 m-2"><i class="mdi mdi-delete-forever"></i></button>
     </div>
   </div>
-
 </template>
 
 
@@ -38,7 +37,9 @@ export default {
       async removeHouse() {
         try {
           // NOTE can pass id of house to be removed from the template OR pull it from props.
-          await housesService.removeHouse(props.house.id)
+          if (await Pop.confirm) {
+            await housesService.removeHouse(props.house.id)
+          }
         } catch (error) {
           Pop.error(error)
           logger.error(error)

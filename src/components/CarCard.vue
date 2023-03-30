@@ -3,13 +3,11 @@
     <img class="img-fluid rounded square-bottom" :src="car.imgUrl" alt="">
     <h5>{{ car.make }} | {{ car.model }} | {{ car.year }}</h5>
     <h5>${{ car.price }}</h5>
-    <div class="p-2 text-start">{{ car.description }}</div>
-
     <div>
-      <div v-if="car.creator" class="creator text-center p-1">
+      <!-- <div v-if="car.creator" class="creator text-center p-1">
         <img :src="car.creator.picture" alt="">
         <span>{{ car.creator.name }}</span>
-      </div>
+      </div> -->
       <button v-if="(car.creatorId == account.id)" @click="removeCar(car.id)"
         class="btn btn-danger delete-btn rounded-pill w-25 m-2"><i class="  mdi mdi-delete-forever"></i></button>
     </div>

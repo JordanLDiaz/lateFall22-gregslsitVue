@@ -13,7 +13,7 @@
         <p>{{ car.description }}</p>
         <h3 class="bg-success p-2 text-dark rounded-pill">${{ car.price }}</h3>
       </div>
-      <button v-if="(car.creatorId == account.id)" class="btn btn-info" @click="(editMode = true)">edit <i
+      <button v-if="(car.creatorId == account.id)" class="btn btn-info w-50 my-2" @click="(editMode = true)"> Edit <i
           class="mdi mdi-pencil"></i></button>
     </div>
     <!-- editing car -->
@@ -26,7 +26,6 @@
   </div>
 </template>
 
-
 <script>
 import { AppState } from '../AppState';
 import { computed, reactive, onMounted, ref } from 'vue';
@@ -34,10 +33,12 @@ import Pop from '../utils/Pop.js';
 import { logger } from '../utils/Logger.js';
 import { carsService } from '../services/CarsService.js';
 import { useRoute } from 'vue-router';
+
 export default {
   setup() {
     const route = useRoute()
     const editMode = ref(false)
+
     async function getCarById() {
       try {
         await carsService.getCarById(route.params.id)
@@ -46,16 +47,17 @@ export default {
         logger.error(error)
       }
     }
+
     onMounted(() => {
       getCarById()
     })
+
     return {
       editMode,
       account: computed(() => AppState.account),
       car: computed(() => AppState.activeCar),
+
       async editCar() {
-
-
         editMode.value = false
       }
     }
@@ -63,7 +65,4 @@ export default {
 };
 </script>
 
-
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

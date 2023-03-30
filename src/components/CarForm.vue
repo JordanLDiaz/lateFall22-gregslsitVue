@@ -1,5 +1,4 @@
 <template>
-
   <form @submit.prevent="handleSubmit()" class="row justify-content-end">
     <div class="mb-3 col-3">
       <label for="" class="form-label">Make</label>
@@ -36,6 +35,7 @@
       <textarea name="" id="" class="form-control" v-model="editable.description" rows="3"></textarea>
       <small id="helpId" class="form-text text-muted">Help text</small>
     </div>
+
     <div class="col-6">
       <button v-if="!carData.id" class="btn btn-info w-100 rounded-pill">Create</button>
       <button v-else class="btn btn-success w-100 rounded-pill">Save</button>
@@ -45,7 +45,6 @@
         @click="editable = {}">Cancel</button>
     </div>
   </form>
-
 </template>
 
 
@@ -108,6 +107,4 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
