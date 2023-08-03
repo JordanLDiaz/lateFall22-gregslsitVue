@@ -8,6 +8,11 @@ class JobsService {
     logger.log('[GETTING ALL JOBS]', res.data)
     AppState.jobs = res.data
   }
+
+  async createJob(jobData) {
+    const res = await api.create('api/jobs', jobData)
+    logger.log('[CREATING CAR]', res.data)
+  }
 }
 
 export const jobsService = new JobsService();

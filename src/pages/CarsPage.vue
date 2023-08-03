@@ -37,6 +37,7 @@ export default {
     onMounted(() => {
       getCars()
     })
+
     return {
       cars: computed(() => AppState.cars)
     }
@@ -45,6 +46,4 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center mt-5">Please select a category to start shopping!</h1>
+  <h1 class="text-center mt-5">Please select a category to start browsing!</h1>
 </template>
 
 <script>

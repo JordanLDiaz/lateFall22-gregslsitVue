@@ -16,13 +16,13 @@
       <label for="" class="form-label">Year</label>
       <input type="number" class="form-control" v-model="editable.year" name="" id="" aria-describedby="helpId"
         placeholder="">
-      <small id="helpId" class="form-text text-muted">Help text</small>
+      <small id="helpId" class="form-text text-muted">{{ editable.year }}</small>
     </div>
     <div class="mb-3 col-3">
       <label for="" class="form-label">Price</label>
       <input type="number" class="form-control" v-model="editable.price" name="" id="" aria-describedby="helpId"
         placeholder="">
-      <small id="helpId" class="form-text text-muted">Help text</small>
+      <small id="helpId" class="form-text text-muted">{{ editable.price }}</small>
     </div>
     <div class="mb-3 col-12">
       <label for="" class="form-label">ImgUrl</label>
@@ -33,7 +33,6 @@
     <div class="mb-3 col-12">
       <label for="" class="form-label">Description</label>
       <textarea name="" id="" class="form-control" v-model="editable.description" rows="3"></textarea>
-      <small id="helpId" class="form-text text-muted">Help text</small>
     </div>
 
     <div class="col-6">
@@ -64,6 +63,7 @@ export default {
     onMounted(() => {
       editable.value = props.carData
     })
+
     const editable = ref({})
 
     async function createCar() {
@@ -78,6 +78,7 @@ export default {
         logger.error(error)
       }
     }
+
     async function editCar() {
       try {
         // NOTE if using ref in setup, you must access the value
